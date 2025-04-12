@@ -1,0 +1,55 @@
+const mongoose=require('mongoose')
+
+pharmacySchema=new mongoose.Schema({
+    pharmacyName:{
+        type:String,
+        required:true,
+    },
+    pharmacyType:{
+        type:String,
+        required:true,
+    },
+    pharmacyPrice:{
+        type:Number,
+        required:true,
+    },
+    pharmacyDescription:{
+        type:String,
+        required:true,
+    },
+    pharmacyCompany:{
+        type:String,
+        required:true,
+    },
+    pharmacyImage:{
+        type:String,
+        required:true,
+        default:'https://example.com/default-image.png'
+    },
+    pharmacyQuantity:{
+        type:Number,
+        required:true,
+    },
+    pharmacyExpiryDate:{
+        type:Date,
+        required:true,
+    },
+    pharmacyManufactureDate:{
+        type:Date,
+        required:true,
+    },
+    pharmacyCategory:{
+        type:String,
+        required:true,
+    },
+    pharmacySubCategory:{
+        type:String,
+        required:true,
+    },
+    pharmacyId:{
+        type:String,
+        default:Date.now()
+    },
+})
+
+module.exports=mongoose.model('Pharmacy',pharmacySchema,'pharmacy')
