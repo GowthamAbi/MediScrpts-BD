@@ -46,7 +46,12 @@ const authController={
 
             //check if password is correct
             const isMatch=await bcrypt.compare(password,user.password)
-            console.log(user.password)
+
+            console.log("Hashed password in DB:", user.password);
+            console.log("Password entered by user:", password);
+            console.log("Do they match?", isMatch);
+
+
             if(!isMatch){
                 return res.status(400).json({message:"Invalid credentials"})
             }
@@ -76,7 +81,12 @@ const authController={
     },
     me:async(req,res)=>{
         try{
-            res.json({message:"Dashboard Success"});
+            
+            const user=await User.findById(req.user.id).select("-password")
+            if(!user){
+                return res.status(400).json({message:"User not found"})
+            }
+            res.status(200).json(user)
         }
         catch(err){
             console.log(err);
