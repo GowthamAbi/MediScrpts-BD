@@ -1,9 +1,25 @@
 const { response } = require("../app");
+const User=require("../models/User")
+const jwt=require("jsonwebtoken")
+const bcrypt=require("bcrypt")
 
 const authController={
     register:async(req,res)=>{
         try{
-            res.json({message:"Register Success"});
+            const{ name, email, password, phone, address } = req.body;
+            //check if user already exists
+            const user=await User.findOne({email})
+
+             if(user)
+             {
+                return res.status(400).json({message:"User already exists"})
+             }
+
+             const newUser=new User({name, email, password, phone, address});
+
+             await newUser.save();
+             res.status(201).json({message:"User created successfully"});
+
         }
         catch(err){
             console.log(err);
