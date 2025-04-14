@@ -10,6 +10,7 @@ authRouter.post('/logout',authController.logout)
 authRouter.get('/me',auth.checkAuth,authController.me)
 authRouter.post('/refresh',authController.refresh)
 authRouter.post('/forgot-password',authController.forgotPassword)
+authRouter.post('/update',auth.checkAuth,authController.updateUser)
 
 
 module.exports=authRouter;
