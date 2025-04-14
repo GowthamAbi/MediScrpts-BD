@@ -81,8 +81,8 @@ const authController={
     },
     me:async(req,res)=>{
         try{
-            
-            const user=await User.findById(req.user.id).select("-password")
+        const {userId}=req
+            const user=await User.findById(userId).select('-password-__v')
             if(!user){
                 return res.status(400).json({message:"User not found"})
             }
