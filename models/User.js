@@ -27,7 +27,7 @@ const userSchema=new mongoose.Schema({
         type:String,
         trim:true,
     },
-    /*role:{
+    role:{
         type:String,
         enum:['agent','inventory','user','admin'],
         default:'user'
@@ -39,7 +39,7 @@ const userSchema=new mongoose.Schema({
     dob:{
         type:Date,
         default:Date.now()
-    }*/
+    }
 
 })
 

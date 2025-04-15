@@ -113,10 +113,10 @@ const authController={
     },
     updateUser:async (req,res)=>{
         try{
-            const userId=req
-            const {name,phone,address,role,profile,dob}=req.body
+            const userId=req.userId
+            const {name,phone,address}=req.body
 
-            const updateUsersId=await User.findByIdAndUpdate(userId,{name,phone,address,role,profile,dob},{new:true})
+            const updateUsersId=await User.findByIdAndUpdate(userId,{name,phone,address},{new:true})
 
             if(!updateUsersId) return res.json({message:"Update issue"})
 
