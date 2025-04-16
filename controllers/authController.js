@@ -120,7 +120,7 @@ const authController={
 
             if(!updateUsersId) return res.json({message:"Update issue"})
 
-            res.status(200).json({message:"Update Sucessfully",user:UpdateUser})
+            res.status(200).json({message:"Update Sucessfully"})
 
 
 
