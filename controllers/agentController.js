@@ -1,18 +1,16 @@
 const { response } = require("../app");
-const User=require("../models/User")
+const Agent=require("../models/Agent")
 const jwt=require("jsonwebtoken")
 const bcrypt=require("bcrypt")
 const { JWT_SECRET } = require("../config/db");
 const { decrypt } = require("dotenv");
 
-// Client Controller
-const authController={
-    register:async(req,res)=>{
+const agentController={register:async(req,res)=>{
         try{
             //validate request body
-            const{ name, email, password, phone, address } = req.body;
+            const{   name,email,password,phone,address,profile,role,dob,companyName,companyId,companyAddress,companyPhone,companyWebsite,companyEmail,companyDescription,companyLogo,companyType,companyPic,companyStatus,gst} = req.body;
             //check if user already exists
-            const user=await User.findOne({email})
+            const user=await Agent.findOne({email})
 
              if(user)
              {
@@ -22,7 +20,7 @@ const authController={
              const hashPassword=await bcrypt.hashSync(password,10)
              //create new user
 
-             const newUser=new User({name, email, password:hashPassword, phone, address});
+             const newUser=new Agent({name, email, password:hashPassword, phone, address,profile,role,dob,companyName,companyId,companyAddress,companyPhone,companyWebsite,companyEmail,companyDescription,companyLogo,companyType,companyPic,companyStatus,gst});
              //save user to database
              await newUser.save();
              res.status(201).json({message:"User created successfully"});
@@ -40,7 +38,7 @@ const authController={
             //req to body
             const {email,password}=req.body;
             //check if user exists
-            const user=await User.findOne({email});
+            const user=await Agent.findOne({email});
             if(!user){
                 return res.status(400).json({message:"User not found"})
             }
@@ -83,7 +81,7 @@ const authController={
     me:async(req,res)=>{
         try{
         const {userId}=req
-            const user=await User.findById(userId).select('-password-__v')
+            const user=await Agent.findById(userId).select('-password-__v')
             if(!user){
                 return res.status(400).json({message:"User not found"})
             }
@@ -117,7 +115,7 @@ const authController={
             const userId=req.userId
             const {name,phone,address}=req.body
 
-            const updateUsersId=await User.findByIdAndUpdate(userId,{name,phone,address},{new:true})
+            const updateUsersId=await Agent.findByIdAndUpdate(userId,{name,phone,address},{new:true})
 
             if(!updateUsersId) return res.json({message:"Update issue"})
 
@@ -133,10 +131,4 @@ const authController={
 
 }
 
-
-
-
-
-
-
-module.exports=authController
+module.exports=agentController

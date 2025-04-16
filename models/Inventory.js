@@ -48,6 +48,11 @@ const inventorySchema=new mongoose.Schema({
         type:String,
         default:'company name'
     },
+    email:
+    {
+        type:String,
+        default:'email'
+    }
 
 })
 

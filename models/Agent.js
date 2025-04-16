@@ -100,6 +100,10 @@ const agentSchema=new mongoose.Schema({
         type:String,
         default:'gst'
     },
+    referenc:{
+        type:String,
+        default:'reference'
+    }
 
 
 })
