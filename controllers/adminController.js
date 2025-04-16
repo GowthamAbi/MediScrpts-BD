@@ -10,7 +10,7 @@ const adminController={
     register:async(req,res)=>{
         try{
             //validate request body
-            const{   name,email,password,phone,address,profile,role,dob,companyName,companyId,companyAddress,companyPhone,companyWebsite,companyEmail,companyDescription,companyLogo,companyType,companyPic,companyStatus,gst} = req.body;
+            const{ name,email,password,phone,address,profile,role,dob,companyName,companyId,companyAddress,companyPhone,companyWebsite,companyEmail,companyDescription,companyLogo,companyType,companyPic,companyStatus,gst} = req.body;
             //check if user already exists
             const user=await Admin.findOne({email})
 

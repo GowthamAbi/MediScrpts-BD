@@ -8,7 +8,7 @@ const adminSchema=new mongoose.Schema({
     },
     email:{
         required:true,
-        true:String,
+        type:String,
         unique:true,
         trim:true,
     },
