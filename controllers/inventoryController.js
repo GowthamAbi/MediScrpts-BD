@@ -4,6 +4,7 @@ const jwt=require("jsonwebtoken")
 const bcrypt=require("bcrypt")
 const { JWT_SECRET } = require("../config/db");
 const { decrypt } = require("dotenv");
+const Medicine = require("../models/Medicine");
 
 
 const inventoryController={
@@ -127,104 +128,7 @@ const inventoryController={
             res.status(401).json({message:"Ubdate Issue"})
         }
     },
-    addInventory:async(req,res)=>{
-        try{
-            const {name,quantity,price}=req.body
-            const inventory=await Inventory.create({name,quantity,price})
-            res.status(201).json({message:"Inventory added successfully",inventory})
-        }
-        catch(err){
-            console.log(err)
-            res.status(500).json({message:"Add Inventory Error"})
-        }
-    },
-    updateInventory:async(req,res)=>{
-        try{
-            const {name,quantity,price}=req.body
-            const inventory=await Inventory.updateOne({name,quantity,price})
-            res.status(201).json({message:"Inventory added successfully",inventory})
-        }
-        catch(err){
-            console.log(err)
-            res.status(500).json({message:"Add Inventory Error"})
-        }
-    },
-    deleteInventory:async(req,res)=>{
-        try{
-            const {name}=req.body
-            const inventory=await Inventory.deleteOne({name})
-            res.status(201).json({message:"Inventory added successfully",inventory})
-        }
-        catch(err){
-            console.log(err)
-            res.status(500).json({message:"Add Inventory Error"})
-        }
-    },
-    listInventory:async(req,res)=>{
-        try{
-            const inventory=await Inventory.find()
-            res.status(201).json({message:"Inventory added successfully",inventory})
-        }
-        catch(err){
-            console.log(err)
-            res.status(500).json({message:"Add Inventory Error"})
-        }
-    },
-    getInventoryById:async(req,res)=>{
-        try{
-            const {id}=req.params
-            const inventory=await Inventory.findById(id)
-            res.status(201).json({message:"Inventory added successfully",inventory})
-        }
-        catch(err){
-            console.log(err)
-            res.status(500).json({message:"Add Inventory Error"})
-        }
-    },
-    searchInventory:async(req,res)=>{
-        try{
-            const {name}=req.body
-            const inventory=await Inventory.find({name})
-            res.status(201).json({message:"Inventory added successfully",inventory})
-        }
-        catch(err){
-            console.log(err)
-            res.status(500).json({message:"Add Inventory Error"})
-        }
-    },
-    filterInventory:async(req,res)=>{
-        try{
-            const {name}=req.body
-            const inventory=await Inventory.find({name})
-            res.status(201).json({message:"Inventory added successfully",inventory})
-        }
-        catch(err){
-            console.log(err)
-            res.status(500).json({message:"Add Inventory Error"})
-        }
-    },
-    sortInventory:async(req,res)=>{
-        try{
-            const {name}=req.body
-            const inventory=await Inventory.find({name})
-            res.status(201).json({message:"Inventory added successfully",inventory})
-        }
-        catch(err){
-            console.log(err)
-            res.status(500).json({message:"Add Inventory Error"})
-        }
-    },
-    checkStock:async(req,res)=>{
-        try{
-            const {name}=req.body
-            const inventory=await Inventory.find({name})
-            res.status(201).json({message:"Inventory added successfully",inventory})
-        }
-        catch(err){
-            console.log(err)
-            res.status(500).json({message:"Add Inventory Error"})
-        }
-    }
+    
 
 
 }

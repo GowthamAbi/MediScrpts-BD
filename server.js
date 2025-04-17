@@ -7,6 +7,7 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
+const medicineRoutes = require('./routes/medicineRoutes');
 
 app.use(cors(
     {
@@ -19,11 +20,8 @@ app.use(cookieParser());
 app.use(morgan('dev'));
 
 app.use('/api/v1/auth',authRouter)
-/*app.use('/api/v1/auth',authRouter.login)
-app.use('/api/v1/auth',authRouter.logout)
-app.use('/api/v1/auth',authRouter.me)
-app.use('/api/v1/auth',authRouter.refresh)
-app.use('/api/v1/auth',authRouter.forgotPassword)*/
+app.us('/api/v1/medicine',medicineRoutes)
+
 
 
 mongoose.connect(MONGODB_URI)

@@ -38,16 +38,7 @@ authRouter.post('/login',authController.login)
 authRouter.post('/logout',authController.logout)
 authRouter.get('/me',auth.checkAuth,authController.me)
 authRouter.post('/forgot-password',inventoryController.forgotPassword)
-authRouter.post('/update',auth.checkAuth,inventoryController.updateUser)
-authRouter.post('/inventory/add',auth.checkAuth,inventoryController.addInventory)
-authRouter.post('/inventory/update',auth.checkAuth,inventoryController.updateInventory)
-authRouter.post('/inventory/delete',auth.checkAuth,inventoryController.deleteInventory)
-authRouter.get('/inventory/list',auth.checkAuth,inventoryController.listInventory)
-authRouter.get('/inventory/:id',auth.checkAuth,inventoryController.getInventoryById)
-authRouter.post('/inventory/search',auth.checkAuth,inventoryController.searchInventory)
-authRouter.post('/inventory/filter',auth.checkAuth,inventoryController.filterInventory)
-authRouter.post('/inventory/sort',auth.checkAuth,inventoryController.sortInventory)
-authRouter.post('/inventory/stock',auth.checkAuth,inventoryController.checkStock)
+
 
 
 module.exports=authRouter;
