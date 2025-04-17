@@ -5,7 +5,6 @@ const auth=require('../middleware/authMiddleware');
 
 
 
-medicineRoutes.post('/update',auth.checkAuth,medicineController.updateUser)
 medicineRoutes.post('/inventory/add',auth.checkAuth,medicineController.addInventory)
 medicineRoutes.post('/inventory/update',auth.checkAuth,medicineController.updateInventory)
 medicineRoutes.post('/inventory/delete',auth.checkAuth,medicineController.deleteInventory)

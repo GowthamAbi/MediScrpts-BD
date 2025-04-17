@@ -20,7 +20,7 @@ app.use(cookieParser());
 app.use(morgan('dev'));
 
 app.use('/api/v1/auth',authRouter)
-app.us('/api/v1/medicine',medicineRoutes)
+app.use('/api/v1/medicine',medicineRoutes)
 
 
 

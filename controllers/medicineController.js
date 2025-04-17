@@ -3,7 +3,7 @@ const Medicine = require("../models/Medicine")
 const medicineController={
     addInventory:async(req,res)=>{
         try{
-            const {medicineName, medicineType, medicinePrice, medicineDescription, medicineCompany, medicineImage, medicineQuantity, medicineExpiryDate, medicineManufactureDate, medicineCategory, medicineSubCategory, medicineId, medicineWtg,
+            const {medicineName, medicineType, medicinePrice, medicineDescription, medicineCompany, medicineImage, medicineQuantity, medicineExpiryDate, medicineManufactureDate, medicineCategory, medicineSubCategory, medicineId, medicineWtg
             }=req.body
             const inventory=await Medicine.create({medicineName, medicineType, medicinePrice, medicineDescription, medicineCompany, medicineImage, medicineQuantity, medicineExpiryDate, medicineManufactureDate, medicineCategory, medicineSubCategory, medicineId, medicineWtg,
             })

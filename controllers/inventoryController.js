@@ -11,7 +11,7 @@ const inventoryController={
     register:async(req,res)=>{
         try{
             //validate request body
-            const{ name,email,password,phone,address,profile,role,dob,companyName,companyId,companyAddress,companyPhone,companyWebsite,companyEmail,companyDescription,companyLogo,companyType,companyPic,companyStatus,gst} = req.body;
+            const{ password,name,address,companyName,dob,email,id,mail,phone,profile,role} = req.body;
             //check if user already exists
             const user=await Inventory.findOne({email})
 
@@ -23,7 +23,7 @@ const inventoryController={
              const hashPassword=await bcrypt.hashSync(password,10)
              //create new user
 
-             const newUser=new Inventory({name, email, password:hashPassword, phone, address,profile,role,dob,companyName,companyId,companyAddress,companyPhone,companyWebsite,companyEmail,companyDescription,companyLogo,companyType,companyPic,companyStatus,gst});
+             const newUser=new Inventory({password:hashPassword,name,address,companyName,dob,email,id,mail,phone,profile,role});
              //save user to database
              await newUser.save();
              res.status(201).json({message:"User created successfully"});

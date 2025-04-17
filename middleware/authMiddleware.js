@@ -1,6 +1,7 @@
 const { JWT_SECRET } = require("../config/db");
 const jwt = require('jsonwebtoken');
 const User = require("../models/User");
+const Inventory = require("../models/Inventory");
 
 const auth = {
     checkAuth: (req, res, next) => {
@@ -30,7 +31,7 @@ const auth = {
         try {
             const { userId } = req;
 
-            const user = await User.findById(userId);
+            const user = await Inventory.findById(userId);
             if (!user) {
                 return res.status(403).json({ message: "Access denied" });
             }
