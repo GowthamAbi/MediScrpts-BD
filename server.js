@@ -11,22 +11,20 @@ const authRouter = require('./routes/authRoutes');
 const medicineRoutes = require('./routes/medicineRoutes');
 
 // Middleware
-const allowedOrigins = [
-    'https://mediscrpt.netlify.app',
-    'http://localhost:5173' // Add your local dev client here
-];
+const allowedOrigins = ['http://localhost:5173', 'https://mediscrpt.netlify.app'];
 
 app.use(cors({
-    origin: function (origin, callback) {
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
 }));
+
 
 app.use(express.json()); // For parsing JSON bodies
 app.use(cookieParser()); // For parsing cookies
