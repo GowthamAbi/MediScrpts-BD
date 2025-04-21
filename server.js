@@ -11,13 +11,16 @@ const medicineRoutes = require('./routes/medicineRoutes');
 
 app.use(cors(
     {
-        origin: 'http://localhost:3000',
+        origin: 'https://mediscrpt.netlify.app/',
+        methods:['GET','POST','PUT','DELETE'],
         credentials: true,
     }
 ));
 app.use(express.json());
 app.use(cookieParser());
 app.use(morgan('dev'));
+
+
 
 app.use('/api/v1/auth',authRouter)
 app.use('/api/v1/medicine',medicineRoutes)
