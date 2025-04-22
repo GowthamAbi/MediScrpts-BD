@@ -45,3 +45,10 @@ mongoose.connect(MONGODB_URI)
     .catch((err) => {
         console.error("❌ MongoDB connection failed:", err);
     });
+
+    app.use((req, res, next) => {
+      res.setHeader("Content-Security-Policy", 
+        "default-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://mediscrpts-bd.onrender.com");
+      next();
+    });
+    
